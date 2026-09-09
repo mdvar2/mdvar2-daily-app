@@ -78,5 +78,36 @@ The cost of skipping the Sprint Backlog is that I could lose focus, take on too 
 
 2. My Definition of Ready filtered out the backlog item for deleting a job-search board. I originally wanted to include it in Sprint 1, but I had not decided what should happen to the job application cards inside the board when it is deleted. Because this question was still unresolved, the item was not ready to be included in the Sprint.
 
+## Assignment 2.3
+
+### Question 1 - Choosing a view
+
+For CareerLane, I would use Timeline as my primary day-to-day view. Job applications often have important dates such as application deadlines, assessment dates and interview dates. The Timeline view would help me see these dates in order and understand what is coming up, which would make it easier to plan my work and avoid missing important deadlines.
+
+I would use the Board view when I want to see where each job application is in the application process, such as Interested, Applied, Assessment, Interview, Offer or Rejected. This would make it easy to see the progress of applications as they move between stages.
+
+I would use the List view when I need a simple and detailed overview of my tasks and application information. It would be useful when I want to review several items quickly or check details without focusing on dates or application stages.
+
+### Question 2 - Custom fields, deliberately
+
+For CareerLane, I would use two custom fields: Priority and Type. The Priority field would have High, Medium and Low values. I would use it to decide which items need my attention first. It would also allow me to filter the project to see only High-priority items when I need to focus on the most important work.
+
+The Type field would have Board, Application, Application Details and Reminder values. I would use it to identify what kind of CareerLane work each task represents. For example, I could filter by Reminder when I only want to see work related to important dates and notifications. I chose these fields because each one supports a specific decision or filter instead of adding information that I would not use.
+
+### Question 3 - Tag or field?
+
+For CareerLane, I would use needs-review as a tag. I could apply it to tasks that I need to come back to and review, and the same tag could also be useful across other projects. I would use Priority as a custom field with High, Medium and Low values. Priority needs consistent values because I want to use it to filter tasks and decide which work needs attention first.
+
+If I swapped them, Priority as a tag could become inconsistent because I could create different free-form versions of the same priority. Using needs-review as a custom field would also add unnecessary structure for something that only needs to mark certain tasks temporarily.
+
+### Assignment 2.3 Reflections
+
+1. The Asana feature that changed how I thought about my backlog the most was dependencies. Before using them, I mostly saw the backlog as a list of separate tasks. Adding dependencies made me think about the order in which tasks need to be completed. For example, in CareerLane, viewing existing job-search boards depends on first having a board that has been created.
+
+2. One field I almost added without a clear purpose was Application Stage. At first it seemed useful to show stages such as Interested, Applied, Assessment and Interview. However, I realised that a custom field should help me make a decision, organise work or filter useful information rather than just add more data. This made me think more carefully about which fields are actually useful.
+
+3. One dependency I discovered in CareerLane is that "View all existing job-search boards" is blocked by "Create a new job-search board with a board name." This dependency is real because there needs to be an existing board before the user can meaningfully view it.
+
+
 
 
