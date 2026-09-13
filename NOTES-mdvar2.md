@@ -109,5 +109,84 @@ If I swapped them, Priority as a tag could become inconsistent because I could c
 3. One dependency I discovered in CareerLane is that "View all existing job-search boards" is blocked by "Create a new job-search board with a board name." This dependency is real because there needs to be an existing board before the user can meaningfully view it.
 
 
+## Assignment 2.4
+
+### Question 1 - Rewrite Sprint 1 as real user stories
+
+1. As a job seeker, I want to create a job-search board with a name, so that I can organise my applications into a specific job-search campaign.
+2. As a job seeker, I want to view all my existing job-search boards, so that I can access and manage my different job-search campaigns.
+3. As a job seeker, I want to rename an existing job-search board, so that I can keep my job-search campaigns clearly organised.
+4. As a job seeker, I want to add a new job application to a board, so that I can keep track of the jobs I am interested in or have applied for.
+5. As a job seeker, I want to see each job application in its current application stage, so that I can quickly understand the progress of my applications.
+
+### Question 2 - Acceptance criteria
+
+#### Story 1 - Create a job-search board
+
+- The user can create a new job-search board.
+- The user can enter a name for the board.
+- The new board is created using the name entered by the user.
+- If no board name is entered, the board is created with the default name "Untitled Board".
+- The newly created board is available for the user to view.
+
+#### Story 2 - View existing job-search boards
+
+- The user can view all job-search boards they have created.
+- Each board displays its board name.
+- Newly created boards appear in the list of existing boards.
+- The user can select an existing board to access it.
+- If the user has no existing boards, the system displays a message indicating that no boards are available.
+
+#### Story 3 - Rename a job-search board
+
+- The user can select an existing job-search board to rename.
+- The user can enter a new name for the selected board.
+- The new board name replaces the previous name after the change is saved.
+- The renamed board appears with its new name when the user views their existing boards.
+- The board's existing job applications are not removed when the board is renamed.
+
+#### Story 4 - Add a job application
+
+- The user can add a new job application to an existing job-search board.
+- The user can enter the company name and job title for the application.
+- The new application is saved to the selected board.
+- The newly added application appears on the selected board.
+- The application is placed in the Interested stage by default when it is first created.
+
+#### Story 5 - View applications in their current stage
+
+- Each job application is displayed on its job-search board.
+- Each application is shown in its current application stage.
+- The supported stages are Interested, Applied, Assessment, Interview, Offer and Rejected.
+- A newly created application appears in the Interested stage by default.
+- The application remains visible in the correct stage when the board is viewed again.
+
+### Question 3 - INVEST check
+
+I evaluated the story: "As a job seeker, I want to rename an existing job-search board, so that I can keep my job-search campaigns clearly organised."
+
+- Independent: It is mostly independent because renaming a board can be developed without depending on the application tracking and reminder features.
+- Negotiable: The exact way the user starts and saves the rename action can still be discussed without changing the purpose of the story.
+- Valuable: It gives the job seeker a useful way to keep their different job-search campaigns organised.
+- Estimable: The expected behaviour and acceptance criteria are clear enough for me to estimate the work.
+- Small: The story focuses only on renaming an existing board and is small enough to complete within the sprint.
+- Testable: The acceptance criteria make it possible to verify that the board can be renamed and that its existing applications are preserved.
+
+The story passes all six parts of INVEST, so I would not change its scope.
+
+### Question 4 - Estimating alone, again
+
+I used relative estimation with a Fibonacci-style scale of 1, 2, 3, 5 and 8.
+
+- Create a job-search board - 3 story points
+- View all existing job-search boards - 2 story points
+- Rename an existing job-search board - 2 story points
+- Add a new job application to a board - 5 story points
+- See each job application in its current application stage - 5 story points
+
+The Sprint 1 total is 17 story points.
+
+The estimate that surprised me most was adding a new job application. As a backlog phrase, it sounded like a simple action, but after writing the full story and acceptance criteria, I realised that it involves capturing application information, saving it to the correct board, displaying it and assigning an initial application stage. This made it larger than I first expected.
+
 
 
