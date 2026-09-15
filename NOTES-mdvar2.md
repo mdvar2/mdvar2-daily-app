@@ -188,5 +188,50 @@ The Sprint 1 total is 17 story points.
 
 The estimate that surprised me most was adding a new job application. As a backlog phrase, it sounded like a simple action, but after writing the full story and acceptance criteria, I realised that it involves capturing application information, saving it to the correct board, displaying it and assigning an initial application stage. This made it larger than I first expected.
 
+## Assignment 3.1
+
+### Question 1 - Suggesting mode vs. comments vs. direct edits
+
+I would use direct editing when I am responsible for the content and the change does not need someone else's approval. For example, in the CareerLane project documentation, I could directly correct a spelling mistake or update the Sprint 1 story point total after confirming the correct value. I would use Suggesting mode when I want to propose a change to someone else's work without permanently changing their original content. For example, if a teammate wrote the CareerLane project scope, I could suggest clearer wording for one of the scope statements and allow them to accept or reject the change.
+
+I would use comments when I want to ask a question, give feedback or discuss something without changing the actual document. For example, I could comment on the CareerLane timeline and ask whether a particular feature should be completed in Sprint 1 or moved to a later sprint.
+
+### Question 2 - Permissions, deliberately
+
+For my CareerLane Drive folder, I would assign permissions based on what each person actually needs to do.
+
+- Editor: I would keep Editor access for myself and give it to a teammate if we were actively working together on CareerLane. Editors need to create, update and organise the project files, so they require permission to make changes.
+- Commenter: I would give my instructor Commenter access. This allows the instructor to review my CareerLane documentation, leave feedback and suggest improvements without directly changing the project content.
+- Viewer: I would give Viewer access to other trainees or cohort members who only need to see the project. They can follow the project and understand what is being built, but they do not need permission to change or comment on the files.
+
+I would not give everyone Editor access because this could lead to accidental changes or deletion of project content. Each person should receive only the level of access needed for their role.
+
+### Question 3 - Sync or async?
+
+For a CareerLane project kickoff, I would use a combination of synchronous and asynchronous communication instead of having a meeting for everything.
+Goal-setting should happen synchronously in a Google Meet because the people involved may have different ideas about what the project should achieve. A live discussion makes it easier to clarify the goal and agree on the direction of the project. Task assignment can begin during the live kickoff so that responsibilities are clear, but the final assignments should be recorded asynchronously in the project tracker. This gives everyone a place to check their responsibilities after the meeting.
+
+Routine status updates should be asynchronous. Team members can update the project tracker or project documentation with their progress instead of scheduling a meeting just to report what they have completed. Blocking questions should first be raised asynchronously when they are simple and can be answered quickly. If a blocker requires discussion, affects several tasks, or cannot be resolved through comments or messages, it should be moved to a live Meet conversation.
+
+This approach keeps live meetings focused on decisions and problems that benefit from discussion, while Docs, Sheets and Calendar provide a record of information that the team can access without needing another meeting.
+
+### NOTES.md Updates
+
+#### 1. What the TidyUp practice revealed
+
+Working on TidyUp first helped me understand how the different Google Workspace tools can support the same project instead of being separate files. When I created the CareerLane kickoff, I had a clearer idea of how to organise the Drive folders and how the Project Doc, tracker and kickoff presentation should connect. I also kept the tracker lightweight because Asana is still the main place where I manage the Sprint 1 work.
+
+#### 2. The permission you almost got wrong
+
+The permission I had to think about most carefully was the instructor's access. It would have been easy to give Editor access simply because the project needed to be shared, but the instructor does not need to directly change my project files. Commenter access is more appropriate because it allows feedback without giving unnecessary editing permission.
+
+#### 3. Sync vs. async, in practice
+
+My original split still made sense in practice. Most of the CareerLane kickoff information could be handled asynchronously through the Project Doc, tracker, presentation and shared Drive folder because the information is recorded and can be reviewed without a meeting. A live conversation is more useful when feedback needs clarification or when a decision cannot be resolved through comments. This showed me that a kickoff does not need a meeting for every activity; the live discussion should focus on decisions and blockers.
+
+
+
+
+
 
 
