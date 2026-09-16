@@ -188,6 +188,14 @@ The Sprint 1 total is 17 story points.
 
 The estimate that surprised me most was adding a new job application. As a backlog phrase, it sounded like a simple action, but after writing the full story and acceptance criteria, I realised that it involves capturing application information, saving it to the correct board, displaying it and assigning an initial application stage. This made it larger than I first expected.
 
+#### TrackFlow Feedback Reflection
+
+During the in-class TrackFlow activity, the instructor reviewed my work individually, including how I had structured the user stories and assigned story points. The overall feedback on my work was positive.
+
+The main suggestion was to make the workflow stages clearer by separating the work into **In Progress**, **Review**, and **Complete**. This would make it easier to see whether a task is still being worked on, is waiting for review, or has actually been completed.
+
+Based on this feedback, I would improve the workflow by using these separate statuses rather than treating work that is still being reviewed as complete. This gives the board a clearer representation of the actual progress of each task.
+
 ## Assignment 3.1
 
 ### Question 1 - Suggesting mode vs. comments vs. direct edits
@@ -223,11 +231,228 @@ Working on TidyUp first helped me understand how the different Google Workspace 
 
 #### 2. The permission you almost got wrong
 
-The permission I had to think about most carefully was the instructor's access. It would have been easy to give Editor access simply because the project needed to be shared, but the instructor does not need to directly change my project files. Commenter access is more appropriate because it allows feedback without giving unnecessary editing permission.
+The permission I had to think about most carefully was deciding who actually needed Editor access. For the CareerLane project, I gave the instructor Commenter access because she needed to review and provide feedback rather than directly edit my work.
+
+I was not able to add another trainee as an Editor and complete the peer collaboration at the time I was working on the assignment. Some trainees were unavailable because we were completing the work at different times, and some had been working on their assignments during the day and were already offline or asleep when I was completing mine.
+
+This showed me that collaboration also depends on availability and timing. In future, I would arrange the collaboration earlier so that another trainee can be available to edit, comment and use Suggesting mode with me rather than leaving that part until late in the assignment.
 
 #### 3. Sync vs. async, in practice
 
 My original split still made sense in practice. Most of the CareerLane kickoff information could be handled asynchronously through the Project Doc, tracker, presentation and shared Drive folder because the information is recorded and can be reviewed without a meeting. A live conversation is more useful when feedback needs clarification or when a decision cannot be resolved through comments. This showed me that a kickoff does not need a meeting for every activity; the live discussion should focus on decisions and blockers.
+
+## Assignment 3.2
+
+### Part 1 - Written Decisions
+
+#### Question 1 - Beyond the core four
+
+In addition to Purpose, Setup, Usage and a Contribution Guide, I would add a Current Project Status section to the CareerLane README. CareerLane is currently in the planning and early development stage, so someone visiting or cloning the repository needs to know what has already been completed and what is still being developed.
+
+Leaving this section out could make someone assume that the full application is already implemented and ready to run, when the repository currently mainly contains the project planning and documentation. A Current Project Status section would set clear expectations and can be updated as CareerLane develops.
+
+#### Question 2 - Comment audit
+
+CareerLane is currently in the planning and documentation stage, and the application source code has not been added to the repository yet. Because of this, there are currently no existing code comments that I can truthfully identify by file and line for removal or improvement.
+
+When development begins, I will use comments mainly to explain non-obvious decisions and reasons rather than restating what the code already shows. For example, if I temporarily comment out a line because it causes an error, I should explain why the line was disabled and what error or problem it caused. This will help another developer understand the reason behind the change instead of simply uncommenting the line and causing the same problem again.
+
+I will complete the actual comment audit once CareerLane contains application source code.
+
+#### Question 3 - What makes a decision ADR-worthy?
+
+One real decision in CareerLane that is worth documenting is the decision to structure the application around boards, columns and cards. A board represents a job-search campaign, columns represent stages such as Interested, Applied, Assessment, Interview, Offer and Rejected, and cards represent individual job applications.
+
+This is ADR-worthy because it defines the core structure of CareerLane and will influence how the application is designed, how job application data is organised and how users interact with the system. Changing this structure later could affect several parts of the application, so documenting why it was chosen gives future contributors context. A small implementation detail, such as the name of a variable or the wording of a button, would not need an ADR because it would not have the same impact on the overall system.
+
+### Part 2 - Given Code Practice
+
+#### Task 1 - Commented QuickNotes Signup Function
+
+```javascript
+function signup(email, password) {
+  if (!email.includes('@')) return { error: 'invalid' };
+  if (password.length < 8) return { error: 'weak' };
+
+  // Use 10 bcrypt rounds to balance password-hashing security with application performance.
+  const hash = bcrypt.hashSync(password, 10);
+
+  const existing = db.users.find(u => u.email === email);
+  if (existing) return { error: 'exists' };
+
+  // New accounts remain unverified until the user confirms their email.
+  const user = db.users.insert({ email, hash, verified: false });
+  sendEmail(user.email, 'confirm-token-' + user.id);
+
+  return { id: user.id };
+}
+
+#### Task 2 - QuickNotes README Excerpt
+
+##### Setup
+
+QuickNotes requires Node.js and npm.
+
+1. Clone the project repository.
+2. Open a terminal in the project directory.
+3. Install the required dependencies:
+```bash
+npm install
+```
+4. Ensure the application has access to its user database and email service before starting it.
+5. Start the application using the start command configured by the project.
+
+##### Usage
+
+The `signup` function creates a new QuickNotes user account using an email address and password. The email address must contain `@`, and the password must contain at least 8 characters. If the email is already registered, the signup request is rejected. When signup succeeds, the password is securely hashed before the user is stored. The new account starts as unverified, and a confirmation email is sent to the user.
+
+Example:
+```javascript
+signup("user@example.com", "password123");
+```
+
+A successful signup returns the ID of the newly created user:
+```javascript
+{ id: 1 }
+```
+Invalid input or an existing account returns an error instead.
+
+#### Task 3 - QuickNotes Signup Endpoint Documentation
+
+##### POST /api/signup
+
+**Description**
+
+Creates a new QuickNotes user account using an email address and password. The account is created as unverified and a confirmation email is sent after successful registration.
+
+**Authentication**
+
+No authentication is required because this endpoint is used to create a new account.
+
+**Request Body**
+
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| email | String | Yes | Email address for the new account. It must contain `@`. |
+| password | String | Yes | Password for the account. It must contain at least 8 characters. |
+
+**Successful Response**
+
+**201 Created**
+
+The account was created successfully.
+```json
+{
+  "id": 1
+}
+```
+
+**Error Responses**
+
+**400 Bad Request - Invalid email**
+
+Returned when the supplied email address does not contain `@`.
+```json
+{
+  "error": "invalid"
+}
+```
+
+**400 Bad Request - Weak password**
+
+Returned when the password contains fewer than 8 characters.
+```json
+{
+  "error": "weak"
+}
+```
+
+**409 Conflict - Existing account**
+
+Returned when an account with the supplied email address already exists.
+```json
+{
+  "error": "exists"
+}
+```
+
+#### Task 4 - QuickNotes ADR
+
+### Title: Hash Passwords with bcrypt at 10 Rounds
+
+**Status:** Accepted
+
+**Context**
+
+QuickNotes needs to store user passwords securely rather than saving them as plain text. Password hashing should make stored passwords difficult to recover if user data is exposed, while still allowing the signup process to perform efficiently.
+
+**Decision**
+
+QuickNotes will hash user passwords using bcrypt with a cost factor of 10 rounds before storing them in the database.
+
+**Consequences**
+
+Using bcrypt means that plain-text passwords are not stored in the user database. The cost factor also makes password hashing deliberately more computationally expensive, which helps protect stored passwords.
+The trade-off is that hashing requires additional processing time. If the cost factor is changed in the future, the team should consider both security requirements and application performance.
+
+### Part 3 - Apply It to CareerLane
+
+#### Task 5 - Real README
+
+The CareerLane README was updated to include Purpose, Setup, Usage, Current Project Status, Project Documentation, Project Links and Contributing sections. The Setup instructions were tested by cloning the repository into a clean directory and opening the cloned project successfully.
+
+#### Task 6 - Real Comment Audit
+
+CareerLane does not contain application source code yet, so there is currently no real source-code comment that I can truthfully remove, rewrite or add. When application development begins, I will apply the comment guidance from this assignment by removing comments that only repeat what the code already shows and adding comments where the reason behind a non-obvious decision needs to be explained.
+
+#### Task 7 - Real CareerLane ADR
+
+A CareerLane ADR was created at:
+`docs/decisions/001-board-column-card-structure.md`
+
+The ADR documents the decision to structure CareerLane around Boards, Columns and Cards, where a Board represents a job-search campaign, Columns represent application stages, and Cards represent individual job applications.
+
+#### Task 8 - Real Endpoint or Function Documentation
+
+CareerLane does not currently contain an API or implemented application functions because the project is still in the planning and documentation stage. Therefore, there is no real endpoint or non-trivial application function that I can truthfully document with implemented inputs, outputs and error cases yet.
+
+The planned CareerLane functionality includes creating boards, adding job applications and moving applications through stages such as Interested, Applied, Assessment, Interview, Offer and Rejected. However, I have not documented any of these as implemented functions because the application source code has not yet been developed.
+
+I will complete this documentation once the corresponding CareerLane function or module has been implemented.
+
+### NOTES.md Updates
+
+#### 1. What the sample exercise revealed
+
+Documenting the QuickNotes signup function helped me understand that good technical documentation should explain information that is not immediately obvious from the code. When I moved to the CareerLane README and ADR, I focused more on explaining the purpose of the project, its current state and why important design decisions were made. It also made me realise that documentation should be honest about what has and has not been implemented yet instead of making the project appear more complete than it currently is.
+
+#### 2. The comment you were wrong about
+
+CareerLane does not contain application source code yet, so I could not complete a real comment removal or rewrite. However, the exercise changed how I think about comments before I begin implementing the application. I originally thought comments were mainly useful for describing what a section of code does. I now understand that clear code should normally explain what it does itself, while comments are more useful for explaining why something was done.
+
+For example, if I comment out a line because it causes an error, I should not leave the disabled code without an explanation. I should document why it was disabled and what problem or error occurred so that another developer does not uncomment it without understanding the reason.
+
+#### 3. The line between decision and detail
+
+After writing the CareerLane ADR, I would document fewer but more important decisions rather than documenting every implementation choice. The Board, Column and Card structure is worth documenting because it affects how CareerLane organises job-search campaigns, application stages and individual applications.
+
+Smaller implementation details that can easily be understood from the code would not need their own ADR. I would use ADRs for decisions that affect the overall structure of the system or would be difficult to change later without affecting other parts of the project.
+
+### Assignment 3.2 Links
+
+- CareerLane README: Link will be added after this branch is pushed to GitHub.
+- CareerLane ADR: Link will be added after this branch is pushed to GitHub.
+- CareerLane endpoint/function documentation: Not yet applicable because CareerLane application development has not started and the repository does not currently contain an API or application function to document.
+
+
+
 
 
 
