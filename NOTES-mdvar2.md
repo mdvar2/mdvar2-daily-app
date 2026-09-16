@@ -446,9 +446,8 @@ After writing the CareerLane ADR, I would document fewer but more important deci
 Smaller implementation details that can easily be understood from the code would not need their own ADR. I would use ADRs for decisions that affect the overall structure of the system or would be difficult to change later without affecting other parts of the project.
 
 ### Assignment 3.2 Links
-
-- CareerLane README: Link will be added after this branch is pushed to GitHub.
-- CareerLane ADR: Link will be added after this branch is pushed to GitHub.
+- CareerLane README: https://github.com/mdvar2/mdvar2-daily-app/blob/main/README.md
+- CareerLane ADR: https://github.com/mdvar2/mdvar2-daily-app/blob/main/docs/decisions/001-board-column-card-structure.md
 - CareerLane endpoint/function documentation: Not yet applicable because CareerLane application development has not started and the repository does not currently contain an API or application function to document.
 
 
