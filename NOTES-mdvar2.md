@@ -450,6 +450,177 @@ Smaller implementation details that can easily be understood from the code would
 - CareerLane ADR: https://github.com/mdvar2/mdvar2-daily-app/blob/main/docs/decisions/001-board-column-card-structure.md
 - CareerLane endpoint/function documentation: Not yet applicable because CareerLane application development has not started and the repository does not currently contain an API or application function to document.
 
+## Assignment 3.3
+
+### Part 1 - Written Decisions
+
+#### Question 1 - Channel choice, for real
+
+One real communication issue I had this week was when I needed another trainee to collaborate with me on my CareerLane Google Drive documents by giving them Editor access. By the time I reached that part of the assignment, the trainees I could have asked were already offline or asleep, so I could not complete the collaboration at that time.
+
+A Slack or Teams message would have been appropriate because I only needed to coordinate quickly with another trainee rather than create a formal record. However, I should have sent the message earlier instead of waiting until I was already completing that part of the assignment. I would also make the request specific by explaining that I needed someone to be available to edit or comment on a CareerLane document and stating when I needed to complete the activity. This would give the other trainee enough context and time to respond.
+
+#### Question 2 - The self-check you did or skipped
+
+One blocker I experienced this week was when an assignment required me to work with application code, including an API endpoint or function, but CareerLane is still in the planning and early implementation phase and I had not developed that part of the application yet.
+
+Before trying to complete the requirement, I checked the CareerLane repository to confirm what files and functionality were actually available. This helped me realise that there was no existing API or application function that I could truthfully document. Instead of creating code just to make the requirement appear complete, I documented the current project status and noted that this part would need to be completed once the relevant functionality has been implemented.
+
+The self-check was useful because it prevented me from documenting functionality that does not yet exist. It also showed me that checking the current state of the project should come before asking for help or assuming that a requirement can already be completed.
+
+#### Question 3 - Specific vs. vague feedback, side by side
+
+**Specific feedback:**  
+The README explains the purpose and planned features of CareerLane clearly, but the project status should be stated explicitly so that someone visiting the repository does not assume that the application is already fully implemented. Add a "Current Project Status" section explaining that CareerLane is currently in the planning and early implementation phase and that application functionality is still being developed.
+
+**Vague feedback:**  
+The README looks good, but it still needs some work.
+
+**Difference:**  
+The specific feedback identifies exactly what needs improvement, explains why it matters, and suggests a clear action, while the vague feedback does not tell the developer what should be changed.
+
+### Part 2 - Given Scenario Practice: BudgetBuddy
+
+#### Task 1 - Channel Rewrite
+
+The budget sync issue is an immediate sprint blocker, so I would communicate it through Slack or Teams for quick coordination. The decision about whether the export feature should be included in the sprint should be handled separately by email because it affects sprint planning and is useful to keep as a clear record.
+
+**Slack/Teams message - Budget sync blocker:**
+
+Hi team, I'm currently blocked on the BudgetBuddy budget sync feature. The sync is not working as expected, so I am investigating the issue now. Has anyone recently worked on the sync functionality or seen a similar problem? I can share the exact behaviour and what I have tried in the thread.
+
+**Email - Export feature decision:**
+
+**Subject: Decision needed: Export feature for current BudgetBuddy sprint**
+
+Hi team,
+
+I would like us to confirm whether the export feature is still part of the current sprint scope. Please let me know whether we are keeping it in this sprint or moving it to a later sprint so that our sprint plan remains clear.
+
+Thanks.
+
+#### Task 2 - Question Rewrite
+
+**Context:**  
+I'm working on the BudgetBuddy budget totals and the category totals are not adding up correctly after the budget is updated.
+
+**What I tried:**  
+I reviewed the `updateBudget()` function and checked the part responsible for recalculating the category totals to understand where the incorrect result might be coming from.
+
+**Exact error/behaviour:**  
+There is no specific error message provided, but the calculated totals do not match the expected budget totals after the update.
+
+**Specific ask:**  
+Could someone help me check whether the issue may be in how `updateBudget()` recalculates the category totals, or point me to the next part of the calculation I should investigate?
+
+#### Task 3 - PR Feedback
+
+The `updateBudget()` function is currently handling several responsibilities in one 40-line block: validating the input, recalculating category totals, and writing the changes to the database. This makes the function harder to read, test, and maintain.
+
+I suggest separating these responsibilities into smaller functions, for example one function for validating the budget input, another for recalculating the category totals, and keeping the database update separate. It would also help to add a short comment where the recalculation logic is not immediately obvious, explaining why that calculation is necessary rather than commenting every line.
+
+#### Task 4 - Receiving It Well
+
+Thanks for the feedback. I understand that `updateBudget()` is doing too many things in one function, which makes it harder to maintain and test.
+
+Would you recommend separating all three responsibilities into their own functions, or should the database update remain in `updateBudget()` while the validation and recalculation logic are extracted first?
+
+I appreciate the suggestion. I would use the clarification to refactor the function into smaller responsibilities and then review whether the recalculation logic needs an explanatory comment.
+
+### Part 3 - Applying This to My Real Work
+
+#### Task 5 - Real Help Request
+
+**Context:**  
+Hi Skye, I am working through the technical documentation requirements for CareerLane. The project is currently in the planning and early implementation phase, so the repository does not yet contain application source code, an API endpoint, or an implemented application function.
+
+**What I tried:**  
+I checked the repository and reviewed the existing CareerLane files to make sure I had not overlooked any functionality that I could use for the code-related documentation tasks. At the moment, the repository contains the project documentation and planning work, but not the application code required for those parts.
+
+**Exact blocker:**  
+Because that functionality has not been implemented yet, I cannot truthfully audit source-code comments or document a real endpoint/function without creating something that does not currently exist in the project.
+
+**Specific ask:**  
+For the requirements that depend on existing application code, should I document that they are not yet applicable and complete them once CareerLane reaches that stage of implementation, or would you prefer me to approach those requirements differently?
+
+#### Task 6 - Leave Real PR Feedback
+
+I reviewed the DevFlow Daily App repository of another trainee and left feedback on the pull request that included their updated README.
+
+**Feedback left:**
+
+> The README is well structured, and I like that you clearly separate the current project status from the planned features, which makes it easy to understand what has and has not been implemented yet. One small suggestion would be to format the Architecture section as a clearer diagram or code block showing the Browser → DevFlow API → Database flow and the future mobile app connection. This could make the planned architecture easier to understand at a glance.
+
+The feedback focused on a specific part of the README, acknowledged what was already done well, and suggested a small improvement that could make the architecture easier for other developers to understand.
+
+**PR:** https://github.com/scroogerzy/DevFlow/pull/5 
+
+#### Task 7 - Reflect on Real Feedback Received
+
+During the Asana TrackFlow activity, the instructor reviewed how I had organised my CareerLane work in Asana and suggested that I add separate sections for **In Progress**, **Review**, and **Complete**.
+
+This feedback was useful because it was specific about how I could improve the way work progress is represented in Asana. Having separate sections would make it easier to distinguish tasks that are currently being worked on, tasks that are waiting for review, and tasks that have been completed.
+
+I would respond by thanking the instructor for the feedback and applying the suggested sections to my Asana workflow. If I was unsure about how a task should move between the sections, I would ask for clarification before making assumptions.
+
+#### Task 8 - Before/After a Real Message
+
+**Original message:**
+
+> hey can you share your your email so I can send you an invitation to be an editor
+
+I sent this message to another trainee when I needed to add someone as an Editor to my CareerLane Google Drive work.
+
+**Rewritten message:**
+
+> Hi, can you please share the email address you use for Google Drive? I need to add another trainee as an Editor to my CareerLane project document for the collaboration activity. Once I send the invitation, I will need you to make an edit or leave a comment on the document. Please let me know if you are available to help. Thanks.
+
+**What changed and why:**
+
+The original message communicated what I needed but did not provide enough context. In the rewritten version, I explained why I needed the email address, what the invitation was for, what I needed the other trainee to do, and asked whether they were available. This makes the message more self-contained and reduces the need for follow-up questions.
+
+### Assignment 3.3 Reflections
+
+#### 1. What the BudgetBuddy practice revealed
+
+The BudgetBuddy exercise made me notice that a message can make sense to me because I already know the context, while the person receiving it may not have that same information. This became clear when I looked back at the message I sent asking another trainee for their email address. I knew that I needed it to add them as an Editor to my CareerLane Google Drive work, but I did not explain all of that in the original message.
+
+Rewriting the BudgetBuddy messages helped me recognise the same habit in my own communication. Going forward, I would include the purpose of the request and what I need from the other person so that they can understand and respond without needing several follow-up messages.
+
+#### 2. The self-check I almost skipped
+
+For the CareerLane blocker in Task 5, I could have easily asked the instructor what to do as soon as I saw that the assignment required an API endpoint or application function. Instead, I first checked the repository and reviewed the existing files to confirm whether there was already something I could use.
+
+That check confirmed that CareerLane had not yet reached the stage where the required API or application function existed. Doing the self-check first meant that my help request could explain exactly what I had already verified and ask a more specific question instead of simply saying that I could not complete the task.
+
+#### 3. Giving feedback on something real
+
+Giving feedback on a real trainee's DevFlow project felt different from writing feedback on the BudgetBuddy sample because I was more careful about how my feedback could be received. With the sample, I could focus only on identifying the problem and suggesting a solution. With a real person's work, I wanted to acknowledge what they had done well while still providing a useful suggestion without making unnecessary changes to their project.
+
+I therefore focused on a small improvement to the DevFlow README's Architecture section. I first acknowledged that the README was well structured and clearly separated the current project status from the planned features, and then suggested presenting the architecture flow more clearly as a diagram or code block. This experience showed me that useful feedback can recognise good work while still giving a specific and actionable suggestion.
+
+### Assignment 3.3 Real Artifact Links and Copies
+
+- **Task 5 - Real help request:** The complete help request is included above under **Task 5 - Real Help Request**. It is based on the real CareerLane blocker encountered when the project did not yet contain the application code or API required by the technical documentation task.
+
+- **Task 6 - Real PR feedback:** https://github.com/scroogerzy/DevFlow/pull/5  
+  My feedback was posted on DevFlow PR #5 and is also copied above under **Task 6 - Leave Real PR Feedback**.
+
+- **Task 7 - Real feedback received:** The instructor gave me this feedback during the in-class Asana TrackFlow activity. My reflection is included above under **Task 7 - Reflect on Real Feedback Received**.  
+  CareerLane Asana project: https://app.asana.com/1/1218292849466881/project/1218305236133456/list/1218305237603854
+
+- **Task 8 - Real message:** The original message I sent to another trainee is copied verbatim above under **Task 8 - Before/After a Real Message**, together with the rewritten version. The message was sent when I needed another trainee's email address so that I could invite them as an Editor to my CareerLane Google Drive work.  
+  CareerLane Google Drive folder: https://drive.google.com/drive/folders/1txXZ4mM-LCSo5C14cz1FuBwtfZG-7k5r?usp=drive_link
+
+
+
+
+
+
+
+
+
+
 
 
 
